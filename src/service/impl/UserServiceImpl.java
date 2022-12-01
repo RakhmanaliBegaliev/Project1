@@ -2,10 +2,7 @@ package service.impl;
 import dao.UserDao;
 import model.User;
 import service.UserService;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class UserServiceImpl implements UserService {
     UserDao userDao = new UserDao();
@@ -16,30 +13,24 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void findById(int userid) throws NotFoundIdException {
+    public User findById(int userid) throws NotFoundIdException {
+            User user = userDao.getUserList().stream()
+                    .filter(x -> x.getId() == userid).findFirst().orElseThrow(()-> new NotFoundIdException("not found"));
 
-        if(userid == userid){
-        throw new RuntimeException("There is no");
-        }else {
-            userDao.getUserList().stream()
-                    .filter(x -> x.getId() == userid)
-                    .forEach(System.out::println);;
-        }
+        return user;
     }
-
     @Override
-    public void deleteById(int userid) {
-        userDao.getUserList().stream()
-                .filter(x -> x.getId() == userid)
-                .collect(Collectors.toList()).remove(1);
-
+    public void deleteById(int userid) throws NotFoundIdException {
+        User user = userDao.getUserList().stream().filter(x->x.getId() == userid)
+                .findFirst().orElseThrow(()-> new NotFoundIdException("not found"));;
+        userDao.getUserList().remove(user);
     }
-
-    @Override
-    public List<User> getAll()
-    {
+        @Override
+        public List<User> getAll () {
             return userDao.getUserList();
-    }
-
-
+        }
 }
+
+
+
+

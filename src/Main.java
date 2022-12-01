@@ -16,8 +16,14 @@ public class Main {
         userService.addUser(new User(3, "Sara", 22, FEMALE));
         userService.addUser(new User(4, "RAYAN", 2, MALE));
 
-        userService.deleteById(1);
-        System.out.println(userService.getAll());
+        try {
+//            userService.deleteById(5);
+//            System.out.println(userService.getAll());
+            System.out.println(userService.method(5));
+        }
+        catch (NotFoundIdException e){
+            System.out.println(e.getMessage());
+        }
 
     }
 

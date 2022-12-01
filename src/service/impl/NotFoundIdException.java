@@ -1,9 +1,11 @@
 package service.impl;
 
-public class NotFoundIdException extends RuntimeException{
+import java.util.function.Supplier;
 
-    @Override
-    public String getMessage() {
-        return super.getMessage();
+public class NotFoundIdException extends Exception {
+
+    public NotFoundIdException(String message) {
+        super(message);
     }
+
 }
