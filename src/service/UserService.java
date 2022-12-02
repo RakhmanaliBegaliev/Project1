@@ -1,8 +1,6 @@
 package service;
-
 import model.User;
 import service.impl.NotFoundIdException;
-
 import java.util.List;
 
 public interface UserService {
@@ -13,8 +11,5 @@ public interface UserService {
     void deleteById(int userid) throws NotFoundIdException;
 
     List<User> getAll();
-    public default String method(int id) throws NotFoundIdException {
-        return "Successfully deleted user with id"+id;
-    }
 
 }

@@ -13,13 +13,13 @@ public class Main {
         UserService userService = new UserServiceImpl();
         userService.addUser(new User(1, "Ronaldo", 37, MALE));
         userService.addUser(new User(2, "Messi", 35, MALE));
-        userService.addUser(new User(3, "Sara", 22, FEMALE));
-        userService.addUser(new User(4, "RAYAN", 2, MALE));
+        userService.addUser(new User(3, "Jennifer", 22, FEMALE));
 
         try {
-//            userService.deleteById(5);
-//            System.out.println(userService.getAll());
-            System.out.println(userService.method(5));
+            System.out.println("User which you want to find: " + userService.findById(1));
+            System.out.println("All users: " + userService.getAll());
+            userService.deleteById(2);
+            System.out.println("All users after deleting some users: " + userService.getAll());
         }
         catch (NotFoundIdException e){
             System.out.println(e.getMessage());

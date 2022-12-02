@@ -1,5 +1,4 @@
 package model;
-
 import Gender.Gender;
 
 public class User {

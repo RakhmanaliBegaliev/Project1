@@ -16,7 +16,6 @@ public class UserServiceImpl implements UserService {
     public User findById(int userid) throws NotFoundIdException {
             User user = userDao.getUserList().stream()
                     .filter(x -> x.getId() == userid).findFirst().orElseThrow(()-> new NotFoundIdException("not found"));
-
         return user;
     }
     @Override
